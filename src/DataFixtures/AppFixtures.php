@@ -26,11 +26,12 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
-        $invoiceNumber = 1;
+
 
         for ($k = 0; $k < 10; $k++) {
             $user = new User();
 
+            $invoiceNumber = 1; // For each user, the invoice number get back to the first number
             $hash = $this->encoder->hashPassword($user, 'password');
 
             $user->setFirstname($faker->firstName)
@@ -45,7 +46,8 @@ class AppFixtures extends Fixture
                 $customer->setFirstname($faker->firstName())
                     ->setLastname($faker->lastName)
                     ->setCompany($faker->company)
-                    ->setEmail($faker->email);
+                    ->setEmail($faker->email)
+                    ->setUser($user);
 
                 $manager->persist($customer);
 
