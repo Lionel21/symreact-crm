@@ -8,7 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=InvoiceRepository::class)
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *          "pagination_enabled"=true,
+ *          "pagination_items_per_page"=20
+ *     }
+ * )
  */
 class Invoice
 {
