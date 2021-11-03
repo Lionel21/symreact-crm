@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InvoiceRepository;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  * @ApiFilter(OrderFilter::class, properties={"sentAt", "amount"})
+ * @ApiFilter(SearchFilter::class, properties={"customer.firstname":"partial"})
  */
 class Invoice
 {
